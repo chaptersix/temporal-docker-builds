@@ -93,7 +93,7 @@ jobs:
 
       - name: Configure image variables
         run: |
-          echo "IMAGE_SHA_TAG=sha-$(git submodule status -- temporal | cut -c2-8)" >> $GITHUB_ENV
+          echo "IMAGE_SHA_TAG=legacy-sha-$(git submodule status -- temporal | cut -c2-8)" >> $GITHUB_ENV
           echo "TAG_LATEST=true" >> $GITHUB_ENV
 
       - name: Bake images

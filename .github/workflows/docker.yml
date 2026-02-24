@@ -57,11 +57,11 @@ jobs:
         run: |
           # Generate SHA image tag
           github_sha_short=${GITHUB_SHA:0:7}
-          echo "IMAGE_SHA_TAG=sha-${github_sha_short}" >> $GITHUB_ENV
+          echo "IMAGE_SHA_TAG=legacy-sha-${github_sha_short}" >> $GITHUB_ENV
 
           # Generate branch image tag
           branch_name=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-          echo "IMAGE_BRANCH_TAG=branch-${branch_name}" >> $GITHUB_ENV
+          echo "IMAGE_BRANCH_TAG=legacy-branch-${branch_name}" >> $GITHUB_ENV
 
           # Get submodule commit hashes
           TEMPORAL_SHA=$(git submodule status -- temporal | awk '{print $1}')
