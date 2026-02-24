@@ -14,9 +14,6 @@ on:
       - cloud/*
       - feature/*
       - release/*
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       commit:
