@@ -1,4 +1,4 @@
-name: Release Temporal Images
+name: Release Server Image
 
 permissions:
   contents: read
@@ -10,7 +10,7 @@ on:
         description: "Commit sha"
         required: true
       tag:
-        description: "The tag for the new images"
+        description: "The tag for the new image"
         required: true
       latest:
         type: boolean
@@ -30,7 +30,7 @@ on:
 
 jobs:
   retag-and-release:
-    name: "Re-tag and release images"
+    name: "Re-tag and release server image"
     runs-on: ubuntu-latest
 
     steps:
@@ -38,13 +38,13 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: "src/go.mod"
-      - name: Copy temporal images
+      - name: Copy server image
         env:
           COMMIT: ${{ github.event.inputs.commit }}
           TAG: ${{ github.event.inputs.tag }}
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
           PASSWORD: ${{ secrets.DOCKER_PAT }}
-          IMAGES: server auto-setup
+          IMAGES: server
           SRC_REPO: temporaliotest
           DST_REPO: temporalio
           LATEST: ${{ github.event.inputs.latest }}
