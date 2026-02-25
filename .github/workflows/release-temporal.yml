@@ -22,11 +22,6 @@ on:
         description: "Also update major tag"
         required: true
         default: false
-      use-normal-source-tag:
-        type: boolean
-        description: "Use sha-<commit> source tag instead of legacy-sha-<commit>"
-        required: true
-        default: false
 
 jobs:
   retag-and-release:
@@ -49,6 +44,5 @@ jobs:
           DST_REPO: temporalio
           LATEST: ${{ github.event.inputs.latest }}
           MAJOR: ${{ github.event.inputs.major }}
-          USE_NORMAL_SOURCE_TAG: ${{ github.event.inputs.use-normal-source-tag }}
         working-directory: ./src
         run: go run ./image_copy/main.go

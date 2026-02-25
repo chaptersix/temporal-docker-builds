@@ -12,8 +12,8 @@ CLI_ROOT := cli
 TEMPORAL_SHA := $(shell sh -c 'git submodule status -- temporal | cut -c2-41')
 TCTL_SHA := $(shell sh -c "git submodule status -- tctl | cut -c2-41")
 
-IMAGE_SHA_TAG ?= legacy-sha-$(shell git rev-parse --short HEAD)
-IMAGE_BRANCH_TAG ?= legacy-branch-$(shell git rev-parse --abbrev-ref HEAD)
+IMAGE_SHA_TAG ?= sha-$(shell git rev-parse --short HEAD)
+IMAGE_BRANCH_TAG ?= branch-$(shell git rev-parse --abbrev-ref HEAD)
 
 DOCKER ?= docker buildx
 DOCKER_BUILDX_CACHE_FROM ?=

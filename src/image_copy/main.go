@@ -27,12 +27,8 @@ type Env struct {
 func loadEnv() *Env {
 	commit := getEnv("COMMIT")
 	updateMajor := os.Getenv("MAJOR") == "true"
-	srcTagPrefix := "legacy-sha-"
-	if os.Getenv("USE_NORMAL_SOURCE_TAG") == "true" {
-		srcTagPrefix = "sha-"
-	}
 	return &Env{
-		srcTag:       fmt.Sprintf("%s%s", srcTagPrefix, commit[0:7]),
+		srcTag:       fmt.Sprintf("sha-%s", commit[0:7]),
 		dstTags:      getTags(getEnv("TAG"), updateMajor),
 		images:       strings.Split(getEnv("IMAGES"), " "),
 		username:     getEnv("USERNAME"),
